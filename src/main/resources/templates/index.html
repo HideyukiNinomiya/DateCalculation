@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>業務日付計算</title>
+</head>
+<body>
+	<form action="#" th:action="@{/result}" method="post">
+		<p>計算基準日<input type="text" name="basedate"><input type="submit"></p>
+	</form>
+	<p th:text="${basedate}"></p>
+	<table>
+		<tr>
+			<th>No.</th>
+			<th>日付ID</th>
+			<th>日付名</th>
+			<th>計算結果</th>
+			<th>計算式(年)</th>
+			<th>計算式(月)</th>
+			<th>計算式(日)</th>
+		</tr>
+		<tr th:each="dateCalculation : ${dateCalculation}"> 
+			<td th:text="${dateCalculation.date_id}"></td>
+			<td th:text="${dateCalculation.date_name}"></td>
+			<td th:text="${aaa}"></td>
+			<td th:text="${dateCalculation.cf_year}"></td>
+			<td th:text="${dateCalculation.cf_month}"></td>
+			<td th:text="${dateCalculation.cf_day}"></td>
+		</tr>
+	</table>
+</body>
+</html>
