@@ -8,7 +8,6 @@
 	<form action="#" th:action="@{/result}" method="post">
 		<p>計算基準日<input type="text" name="basedate"><input type="submit"></p>
 	</form>
-	<p th:text="${basedate}"></p>
 	<table>
 		<tr>
 			<th>No.</th>
@@ -19,10 +18,11 @@
 			<th>計算式(月)</th>
 			<th>計算式(日)</th>
 		</tr>
-		<tr th:each="dateCalculation : ${dateCalculation}"> 
+		<tr th:each="dateCalculation,stat : ${dateCalculation}"> 
+		 	<td th:text="${stat.count}"></td>
 			<td th:text="${dateCalculation.date_id}"></td>
 			<td th:text="${dateCalculation.date_name}"></td>
-			<td th:text="${aaa}"></td>
+			<td th:text="${cfDate}"></td>
 			<td th:text="${dateCalculation.cf_year}"></td>
 			<td th:text="${dateCalculation.cf_month}"></td>
 			<td th:text="${dateCalculation.cf_day}"></td>
