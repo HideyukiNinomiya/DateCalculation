@@ -16,7 +16,7 @@ import app.domain.DateCalculation;
 
 @Controller
 public class IndexController {
-
+	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
@@ -37,9 +37,14 @@ public class IndexController {
 	public String index2(@ModelAttribute("basedate") String basedate ,Model model) {
 		List<Map<String,Object>> list;
 		list = jdbcTemplate.queryForList("select * from date_calculation");
-		model.addAttribute("dateCalculation", list);
 		LocalDate cfDate = LocalDate.parse(basedate,DateTimeFormatter.ofPattern("yyyyMMdd"));
-		model.addAttribute("cfDate",cfDate);
+			for(int i=0;i<list.size();i++) {
+				LocalDate result = cfDate.plusYears((int)list.get(i).get("cf_year"))
+						.plusMonths((int)list.get(i).get("cf_month"))
+						.plusDays((int)list.get(i).get("cf_day"));
+				list.get(i).put("resultDate",result);
+			}
+		model.addAttribute("dateCalculation", list);
 		return "index";
 	}
 	
