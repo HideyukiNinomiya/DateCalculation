@@ -6,7 +6,10 @@
 </head>
 <body>
 	<form action="#" th:action="@{/result}" method="post">
-		<p>計算基準日<input type="text" name="basedate"><input type="submit"></p>
+		<p>計算基準日<input type="text" name="inputDate" placeholder="20181231"><input type="submit"></p>
+	</form>
+	<form action="#" th:action="@{/new}" method="get">
+		<input type="submit" value="新規登録">
 	</form>
 	<table>
 		<tr>
@@ -18,14 +21,24 @@
 			<th>計算式(月)</th>
 			<th>計算式(日)</th>
 		</tr>
-		<tr th:each="dateCalculation,stat : ${dateCalculation}"> 
+		<tr th:each="result,stat : ${results}"> 
 		 	<td th:text="${stat.count}"></td>
-			<td th:text="${dateCalculation.date_id}"></td>
-			<td th:text="${dateCalculation.date_name}"></td>
-			<td th:text="${dateCalculation.resultDate}"></td>
-			<td th:text="${dateCalculation.cf_year}"></td>
-			<td th:text="${dateCalculation.cf_month}"></td>
-			<td th:text="${dateCalculation.cf_day}"></td>
+			<td th:text="${result.dateId}"></td>
+			<td th:text="${result.dateName}"></td>
+			<td th:text="${result.resultDate}"></td>
+			<td th:text="${result.cfYear}"></td>
+			<td th:text="${result.cfMonth}"></td>
+			<td th:text="${result.cfDay}"></td>
+			<td>
+			<form action="#" th:action="@{/edit/{dateId}(dateId=${result.dateId})}" method="get">
+				<input type="submit" value="編集">
+			</form>
+			</td>
+			<td>
+			<form action="#" th:action="@{/delete/{dateId}(dateId=${result.dateId})}" method="post">
+				<input type="submit" value="削除">
+			</form>
+			</td>
 		</tr>
 	</table>
 </body>
