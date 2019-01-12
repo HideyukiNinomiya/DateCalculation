@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class DateFormula {
-	
-	private String date_id = "D00";
-	private String date_name = "";
-	private int cf_year = 0;
-	private int cf_month = 0;
-	private int cf_day = 0;
+	//デフォルト値入れすぎ！
+	private String dateId = "D00";
+	private String dateName = "";
+	private int formulaYear = 0;
+	private int formulaMonth = 0;
+	private int formulaDay = 0;
 	private String resultDate = "9999/12/31";
 	
 	public DateFormula(){
@@ -17,49 +17,49 @@ public class DateFormula {
 	
 	public DateFormula DateConversion(String inputDate) {
 		LocalDate baseDate = LocalDate.parse(inputDate,DateTimeFormatter.ofPattern("yyyyMMdd"));
-		LocalDate result = baseDate.plusYears(cf_year).plusMonths(cf_month).plusDays(cf_day);
+		LocalDate result = baseDate.plusYears(formulaYear).plusMonths(formulaMonth).plusDays(formulaDay);
 		this.resultDate = result.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 		return this;
 	}
 	
 	public String getDateId() {
-		return date_id;
+		return dateId;
 	}
 	
-	public void setDateId(String date_id) {
-		this.date_id = date_id;
+	public void setDateId(String dateId) {
+		this.dateId = dateId;
 	}
 
 	public String getDateName() {
-		return date_name;
+		return dateName;
 	}
 	
-	public void setDateName(String date_name) {
-		this.date_name = date_name;
+	public void setDateName(String dateName) {
+		this.dateName = dateName;
 	}
 	
-	public int getCfYear() {
-		return cf_year;
+	public int getFormulaYear() {
+		return formulaYear;
 	}
 	
-	public void setCfYear(int cf_year) {
-		this.cf_year = cf_year;
+	public void setFormulaYear(int formulaYear) {
+		this.formulaYear = formulaYear;
 	}
 
-	public int getCfMonth() {
-		return cf_month;
+	public int getFormulaMonth() {
+		return formulaMonth;
 	}
 	
-	public void setCfMonth(int cf_month) {
-		this.cf_month = cf_month;
+	public void setFormulaMonth(int formulaMonth) {
+		this.formulaMonth = formulaMonth;
 	}
 	
-	public int getCfDay() {
-		return cf_day;
+	public int getFormulaDay() {
+		return formulaDay;
 	}
 	
-	public void setCfDay(int cf_day) {
-		this.cf_day = cf_day;
+	public void setFormulaDay(int formulaDay) {
+		this.formulaDay = formulaDay;
 	}
 	
 	public String getResultDate() {

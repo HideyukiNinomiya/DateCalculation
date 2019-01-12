@@ -6,7 +6,7 @@
 </head>
 <body>
 	<form action="#" th:action="@{/result}" method="post">
-		<p>計算基準日<input type="text" name="inputDate" placeholder="20181231"><input type="submit"></p>
+		<p>計算基準日<input type="text" name="baseDate" th:value=${baseDate}><input type="submit"></p>
 	</form>
 	<form action="#" th:action="@{/new}" method="get">
 		<input type="submit" value="新規登録">
@@ -26,9 +26,9 @@
 			<td th:text="${result.dateId}"></td>
 			<td th:text="${result.dateName}"></td>
 			<td th:text="${result.resultDate}"></td>
-			<td th:text="${result.cfYear}"></td>
-			<td th:text="${result.cfMonth}"></td>
-			<td th:text="${result.cfDay}"></td>
+			<td th:text="${result.formulaYear}"></td>
+			<td th:text="${result.formulaMonth}"></td>
+			<td th:text="${result.formulaDay}"></td>
 			<td>
 			<form action="#" th:action="@{/edit/{dateId}(dateId=${result.dateId})}" method="get">
 				<input type="submit" value="編集">
